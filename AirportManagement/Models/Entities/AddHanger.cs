@@ -7,46 +7,44 @@ using System.Web;
 
 namespace AirportManagement.Models.Entities
 {
-    public class AddPilot
+    public class AddHanger
     {
-        public AddPilot() { }
-        [Required(ErrorMessage ="Enter Pilot Name")]
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Pilot Name should contain only alphabets and spaces.")]
-        public string PilotName { get; set; }
-        [Required(ErrorMessage ="Enter license number")]
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "The license number must be exactly 10 digits.")]
-
-        public string LicenseNo { get; set; }
-        [Required(ErrorMessage ="Enter social security number")]
-        [RegularExpression(@"^\d{3}-\d{2}-\d{4}$", ErrorMessage = "Invalid Social Security Number.")]
-
-        public string SocialSecurityNo { get; set; }
-
-        [Required(ErrorMessage ="Enter date of birth")]
+        public AddHanger() { }
+        [Required(ErrorMessage = "*Required")]
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Enter alphabets and spaces")]
+        public string HangerLocation { get; set; }
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Capacity must contain only numbers.")]
+        public int HangerCapacity { get; set; }
+        [Required(ErrorMessage = "*Required")]
+        public string ManagerName { get; set; }
+        [Required(ErrorMessage = "*Required")]
+        [RegularExpression(@"^\d{3}-\d{2}-\d{4}$", ErrorMessage = "Invalid Social Security Number.(ddd-dd-dddd)")]
+        public string SocialSecuirtyNo { get; set; }
+        [Required(ErrorMessage = "*Required")]
         [CustomDateValidation(ErrorMessage = "Date of Birth should be less than today's date.")]
-        public DateTime DateOfBirth { get; set; }
-        [Required(ErrorMessage = "Please select a valid gender.")]
+        public DateTime Dob { get; set; }
+        [Required(ErrorMessage = "*Required")]
         public string Gender { get; set; }
-        [Required(ErrorMessage ="Enter Mobile number")]
+        [Required(ErrorMessage = "*Required")]
         [RegularExpression(@"^[1-9]\d{9}$", ErrorMessage = "Please enter a valid 10-digit mobile number")]
         public string MobileNo { get; set; }
-        [Required(ErrorMessage ="Enter email address")]
+        [Required(ErrorMessage = "*Required")]
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Please enter a valid email address.")]
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
 
-        [Required(ErrorMessage ="Enter House number")]
+        [Required(ErrorMessage = "*Required")]
         public string HouseNo { get; set; }
-        [Required(ErrorMessage = "City is required.")]
+        [Required(ErrorMessage = "*Required")]
         [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "City should contain only alphabets and space.")]
         public string City { get; set; }
-        [Required(ErrorMessage = "State is required.")]
+        [Required(ErrorMessage = "*Required")]
         [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "State should contain only alphabets and space.")]
         public string State { get; set; }
 
-        [Required(ErrorMessage = "Country is required.")]
+        [Required(ErrorMessage = "*Required")]
         [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Country should contain only alphabets and space.")]
         public string Country { get; set; }
-        [Required(ErrorMessage = "PIN Number is required.")]
+        [Required(ErrorMessage = "*Required")]
         [RegularExpression(@"^\d{7}$", ErrorMessage = "PIN Number should contain exactly 7 digits.")]
         public string PinNo { get; set; }
         [Required(ErrorMessage = "*Required")]

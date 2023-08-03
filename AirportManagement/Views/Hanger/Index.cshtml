@@ -2,31 +2,36 @@
 @{
     ViewBag.Title = "Index";
 }
-<link href="~/Content/Pilot/PilotStyles.css" rel="stylesheet" />
+
 <h2>Index</h2>
 
 @using (Html.BeginForm())
 {
     <table>
         <tr>
-            <td><label for="PilotName">Pilot Name:</label></td>
-            <td>@Html.TextBox("PilotName")</td>
-            <td>@Html.ValidationMessage("PilotName")</td>
+            <td><label for="HangerLocation">Hanger Location:</label></td>
+            <td>@Html.TextBox("HangerLocation")</td>
+            <td>@Html.ValidationMessage("HangerLocation")</td>
         </tr>
         <tr>
-            <td><label for="LicenseNo">License Number:</label></td>
-            <td>@Html.TextBox("LicenseNo")</td>
-            <td>@Html.ValidationMessage("LicenseNo")</td>
+            <td><label for="HangerCapacity">Hanger Capacity:</label></td>
+            <td>@Html.TextBox("HangerCapacity")</td>
+            <td>@Html.ValidationMessage("HangerCapacity")</td>
         </tr>
         <tr>
-            <td><label for="SocialSecurityNo">Social Security Number:</label></td>
-            <td>@Html.TextBox("SocialSecurityNo")</td>
-            <td>@Html.ValidationMessage("SocialSecurityNo")</td>
+            <td><label for="ManagerName">Manager Name:</label></td>
+            <td>@Html.TextBox("ManagerName")</td>
+            <td>@Html.ValidationMessage("ManagerName")</td>
         </tr>
         <tr>
-            <td><label for="DateOfBirth">Date of Birth:</label></td>
-            <td>@Html.TextBox("DateOfBirth", null, new { type = "date" })</td>
-            <td>@Html.ValidationMessage("DateOfBirth")</td>
+            <td><label for="SocialSecuirtyNo">Social Security Number:</label></td>
+            <td>@Html.TextBox("SocialSecuirtyNo")</td>
+            <td>@Html.ValidationMessage("SocialSecuirtyNo")</td>
+        </tr>
+        <tr>
+            <td><label for="Dob">Date of Birth:</label></td>
+            <td>@Html.TextBox("Dob", null, new { type = "date" })</td>
+            <td>@Html.ValidationMessage("Dob")</td>
         </tr>
         <tr>
             <td><label for="Gender">Gender:</label></td>
@@ -47,14 +52,19 @@
             <td>@Html.ValidationMessage("MobileNo")</td>
         </tr>
         <tr>
-            <td><label for="EmailAddress">Email Address:</label></td>
-            <td>@Html.TextBox("EmailAddress")</td>
-            <td>@Html.ValidationMessage("EmailAddress")</td>
+            <td><label for="Email">Email Address:</label></td>
+            <td>@Html.TextBox("Email")</td>
+            <td>@Html.ValidationMessage("Email")</td>
         </tr>
         <tr>
             <td><label for="HouseNo">House Number:</label></td>
             <td>@Html.TextBox("HouseNo")</td>
             <td>@Html.ValidationMessage("HouseNo")</td>
+        </tr>
+        <tr>
+            <td><label for="AddressLine">Address Line:</label></td>
+            <td>@Html.TextArea("AddressLine")</td>
+            <td>@Html.ValidationMessage("AddressLine")</td>
         </tr>
         <tr>
             <td><label for="City">City:</label></td>
@@ -77,15 +87,9 @@
             <td>@Html.ValidationMessage("PinNo")</td>
         </tr>
         <tr>
-            <td><label for="AddressLine">Address Line:</label></td>
-            <td>@Html.TextArea("AddressLine")</td>
-            <td>@Html.ValidationMessage("AddressLine")</td>
+            <td colspan="3"><input name="HangerBtn" type="submit" value="AddHanger" /></td>
+            <td colspan="3"><input name="HangerBtn" type="submit" value="Reset" /></td>
         </tr>
-        <tr>
-            <td colspan="3"><input name="AddPilotBtn" type="submit" value="AddPilot" /></td>
-            <td colspan="3"><input name="AddPilotBtn" type="submit" value="Reset" /></td>
-        </tr>
-
     </table>
 }
 @if (ViewBag.msg != null)

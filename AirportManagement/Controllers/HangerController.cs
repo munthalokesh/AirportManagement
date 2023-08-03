@@ -8,18 +8,18 @@ using System.Web.Mvc;
 
 namespace AirportManagement.Controllers
 {
-    public class PilotController : Controller
+    public class HangerController : Controller
     {
-        // GET: Pilot
+        // GET: Hanger
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(AddPilot a, string AddPilotBtn)
+        public ActionResult Index(AddHanger Ah, string HangerBtn)
         {
-            if (AddPilotBtn == "AddPilot")
+            if (HangerBtn == "AddHanger")
             {
                 if (ModelState.IsValid)
                 {
@@ -27,7 +27,7 @@ namespace AirportManagement.Controllers
                     using (var client = new HttpClient())
                     {
                         client.BaseAddress = new Uri("https://localhost:44338/api/");
-                        var responseTask = client.PostAsJsonAsync<AddPilot>("Pilot", a);
+                        var responseTask = client.PostAsJsonAsync<AddHanger>("HangerDetails", Ah);
                         responseTask.Wait();
                         var result = responseTask.Result;
                         var readData = result.Content.ReadAsAsync<string>();
@@ -36,7 +36,7 @@ namespace AirportManagement.Controllers
                             st = readData.Result;
                             ViewBag.msg = st;
                             ModelState.Clear();
-                            return View();
+                            return View(new AddHanger());
                         }
                         else
                         {
@@ -48,11 +48,11 @@ namespace AirportManagement.Controllers
                 }
                 else
                 {
-                    ViewBag.msg = "couldn't add pilot";
+                    ViewBag.msg = "couldn't add Hanger";
                     return View();
                 }
             }
-            else if (AddPilotBtn == "Reset")
+            else if (HangerBtn == "Reset")
             {
                 ModelState.Clear();
                 return View();
