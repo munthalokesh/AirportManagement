@@ -1,0 +1,159 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital@0;1&display=swap');
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+.home_section {
+    background-image: url("https://keystoneacademic-res.cloudinary.com/image/upload/element/11/116553_photo-1542296332-2e4473faf563.jpg");
+    /* Full height */
+    height: 94vh;
+    
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    z-index:-1;
+    
+}
+.homepage{
+    margin-top:120px;
+    margin-right:0px;
+    margin-left:0px;
+    padding:0px;
+}
+
+.welcome_msg {
+    font-family: 'Open Sans', sans-serif;
+    color: #e9ecf2;
+    text-shadow:unset;
+    font-weight: bold;
+    font-size:45px;
+}
+/*.welcome_container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}*/
+.animation-container {
+    opacity: 0; /* Start with the container invisible */
+    transform: translateY(20px); /* Move it slightly down */
+    animation: fadeInUp 1s forwards; /* Apply the animation */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1; /* Fade in */
+        transform: translateY(0); /* Move back to original position */
+    }
+}
+#loginButton {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #aba395;
+    border-radius: 10px;
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    background-color: transparent;
+    color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    cursor:pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+    #loginButton:hover {
+        background-color: #aba395;
+        color: black;
+    }
+
+.about-section {
+    max-width: 1000px;
+    margin: 30px auto;
+    margin-left:20px;
+    padding: 20px;
+    font-weight:bold;
+    background-color: transparent;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index:1;*/
+}
+
+    .about-section h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .about-section h2 {
+        font-size: 1.5rem;
+        margin-top: 20px;
+    }
+
+.website-name {
+    font-weight: bold;
+    color: #333;
+}
+.about-section p {
+    margin-bottom: 15px;
+}
+
+.about-section ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.caption
+{
+    font-family: sans-serif;
+    color:azure;
+    font-style:italic;
+}
+.car-container
+{
+    width: 37%;
+    margin:20px;
+    margin-right:20px;
+    padding-top: 30px;
+    height:25%;
+}
+.about-bg {
+    background-color: #d4ad9b; 
+    /*background-image: url("https://schwarzmann.eu/wp-content/uploads/2020/09/aircraft-hangar-garage-vienna-2-scaled.jpg.webp");*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+    .about-bg::before {
+        content:"";
+        opacity: 0.2; /* Adjust the opacity value as needed */
+        z-index: -1;
+    }
+
+.button-style {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: darkslateblue;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button-style:hover {
+    background-color: darkslateblue;
+    color: ghostwhite;
+}

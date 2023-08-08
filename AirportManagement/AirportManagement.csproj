@@ -126,12 +126,18 @@
     <Compile Include="Controllers\HangerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PilotController.cs" />
+    <Compile Include="Controllers\PlaneController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DataLayer\CustomDateValidationAttribute.cs" />
     <Compile Include="Models\Entities\AddHanger.cs" />
     <Compile Include="Models\Entities\AddPilot.cs" />
+    <Compile Include="Models\Entities\AddPlane.cs" />
+    <Compile Include="Models\Entities\Address.cs" />
+    <Compile Include="Models\Entities\Booking.cs" />
+    <Compile Include="Models\Entities\GetAvailableHangers.cs" />
+    <Compile Include="Models\Entities\GetAvailablePlanes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +157,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\HomePage\HomeLayout.css" />
+    <Content Include="Content\HomePage\homepage.css" />
+    <Content Include="Content\Images\1.png" />
+    <Content Include="Content\Images\2.png" />
+    <Content Include="Content\Images\3.png" />
     <Content Include="Content\Pilot\PilotStyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -172,6 +183,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\MyScripts\EmailBlur.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -188,6 +200,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pilot\Index.cshtml" />
     <Content Include="Views\Hanger\Index.cshtml" />
+    <Content Include="Views\Hanger\GetHangers.cshtml" />
+    <Content Include="Views\Hanger\displayHangers.cshtml" />
+    <Content Include="Views\Hanger\BookHanger.cshtml" />
+    <Content Include="Views\Plane\Index.cshtml" />
+    <Content Include="Views\Home\Services.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
