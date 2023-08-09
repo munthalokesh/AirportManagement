@@ -1,0 +1,55 @@
+﻿@model AirportManagement.Models.Entities.LoginCls
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+
+
+
+{
+    <div class="LoginContainer">
+        <table>
+            <tr>
+
+
+
+                <td>Email</td>
+            </tr>
+            <tr>
+                <td>@Html.TextBoxFor(x => x.email, new { id = "email" })</td>
+                <td> @Html.ValidationMessageFor(x => x.email)</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+            </tr>
+            <tr>
+                <td>@Html.PasswordFor(x => x.password, new { id = "password" })</td>
+                <td>@Html.ValidationMessageFor(x => x.password)</td>
+            </tr>
+
+
+
+            <tr>
+                <td><input type="submit" value="Login" id="btnlogin" /> </td>
+            </tr>
+        </table>
+    </div>
+
+
+
+
+
+    if (ViewBag.msg != null)
+    {
+        <h1>@ViewBag.msg</h1>
+
+
+
+
+
+    }
+
+}

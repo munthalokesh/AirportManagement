@@ -3,7 +3,8 @@
 }
 
 
-<link href="~/Content/HomePage/homepage.css" rel="stylesheet" />
+
+<link href="~/Content/HomePage/homepage.css" rel="stylesheet" type="text/css" runat="server" />
 @*<main>
         <section class="row" aria-labelledby="aspnetTitle">
             <h1 id="title">ASP.NET</h1>
@@ -38,7 +39,7 @@
         <h1 class="welcome_msg">Welcome to TechAir Hanger Management for Airports</h1>
         <p class="caption">"Your trusted partner in advanced airport hangar management solutions."</p>
     </div>
-    <a id="loginButton" href="@Url.Action("About", "Home")">Login</a>
+    <a id="loginButton" href="@Url.Action("Index", "Login")">Login</a>
 </div>
 <div class="about-bg pb-4" id="aboutus">
     <div class="d-flex flex-row justify-content-center align-items-center">
@@ -99,7 +100,7 @@
 
     </div>
     <div class="text-center">
-        <a id="ExploreMoreBtn" href="@Url.Action("About", "Home")" class="button-style">Explore More</a>
+        <a id="ExploreMoreBtn" href="@Url.Action("Services", "Home")" class="button-style">Explore More</a>
     </div>
     
 </div>

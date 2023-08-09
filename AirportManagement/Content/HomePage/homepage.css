@@ -157,3 +157,11 @@ body {
     background-color: darkslateblue;
     color: ghostwhite;
 }
+.name {
+    font-size: 30px;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    margin-top: 5px;
+}

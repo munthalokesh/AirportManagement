@@ -9,6 +9,7 @@ using AirportManagement.Models.Entities;
 
 namespace AirportManagement.Controllers
 {
+    [TypeAuthorization("Admin")]
     public class PlaneController : Controller
     {
         // GET: Plane
@@ -42,7 +43,7 @@ namespace AirportManagement.Controllers
                         {
                             st = readData.Result;
                             ViewBag.msg = st;
-                            return View();
+                            return View(ap);
                         }
                     }
                 }

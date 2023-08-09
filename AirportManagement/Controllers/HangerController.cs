@@ -11,6 +11,7 @@ namespace AirportManagement.Controllers
     public class HangerController : Controller
     {
         // GET: Hanger
+        [TypeAuthorization("Admin")]
         public ActionResult Index()
         {
             return View();
@@ -62,6 +63,7 @@ namespace AirportManagement.Controllers
                 return View();
             }
         }
+        [TypeAuthorization("Manager")]
         [HttpGet]
         public ActionResult GetHangers()
         {
@@ -112,7 +114,7 @@ namespace AirportManagement.Controllers
                 return View();
             }
         }
-
+        [TypeAuthorization("Manager")]
         public ActionResult displayHangers(List<GetAvailableHangers> data)
         {
             return View(data);
@@ -168,6 +170,7 @@ namespace AirportManagement.Controllers
             }
 
         }
+        [TypeAuthorization("Manager")]
         public ActionResult BookHanger()
         {
             return View();
