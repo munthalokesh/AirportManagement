@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace AirportManagement.Controllers
 {
-    //[TypeAuthorization("Admin")]
+    [TypeAuthorization("Admin")]
     public class PilotController : Controller
     {
         // GET: Pilot
