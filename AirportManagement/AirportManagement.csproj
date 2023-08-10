@@ -141,6 +141,7 @@
     <Compile Include="Models\Entities\Booking.cs" />
     <Compile Include="Models\Entities\GetAvailableHangers.cs" />
     <Compile Include="Models\Entities\GetAvailablePlanes.cs" />
+    <Compile Include="Models\Entities\Hanger.cs" />
     <Compile Include="Models\Entities\LoginCls.cs" />
     <Compile Include="Models\Entities\LoginFromApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -196,6 +197,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\MyScripts\EmailBlur.js" />
+    <Content Include="Scripts\MyScripts\GetHangerStatus.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -222,6 +224,7 @@
     <Content Include="Views\Shared\_ManagerMaster.cshtml" />
     <Content Include="Views\Admin\Home.cshtml" />
     <Content Include="Views\Manager\Home.cshtml" />
+    <Content Include="Views\Hanger\GetStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

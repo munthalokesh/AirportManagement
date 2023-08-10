@@ -207,5 +207,37 @@ namespace AirportManagement.Controllers
                 }
             }
         }
+        [TypeAuthorization("Manager")]
+        public ActionResult GetStatus()
+        {
+            List<Hanger> st = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44338/api/");
+                var responseTask = client.GetAsync("HangerDetails/GetAllHangers");
+                responseTask.Wait();
+                var result = responseTask.Result;
+                var readData = result.Content.ReadAsAsync<List<Hanger>>();
+                if (result.IsSuccessStatusCode)
+                {
+                    st = readData.Result;
+                    if (st != null && st.Count > 0)
+                    {
+                        return View(st);
+                    }
+                    else
+
+                    {
+                        return View("NoHangers");//create view to display no hangers message
+                    }
+                }
+                else
+                {
+                    st = readData.Result;
+                    ViewBag.msg = st;
+                    return View(st);
+                }
+            }
+        }
     }
 }
