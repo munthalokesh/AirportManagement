@@ -35,11 +35,22 @@
         </div>
     </main>*@
 <div class="home_section d-flex flex-column justify-content-center align-items-center " id="HomeSection">
-    <div class="animation-container text-center">
-        <h1 class="welcome_msg">Welcome to TechAir Hanger Management for Airports</h1>
-        <p class="caption">"Your trusted partner in advanced airport hangar management solutions."</p>
+    <video autoplay muted loop id="myVideo">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-dusk-from-the-boarding-area-of-an-airport-36351-large.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="content-overlay">
+        <div class="animation-container text-center">
+            <h1 class="welcome_msg">Welcome to TechAir Hangar Management for Airports</h1>
+            <p class="caption">"Your trusted partner in advanced airport hangar management solutions."</p>
+        </div>
+        <a id="loginButton" href="@Url.Action("Index", "Login")">Login</a>
     </div>
-    <a id="loginButton" href="@Url.Action("Index", "Login")">Login</a>
+    @*<div class="animation-container text-center">
+            <h1 class="welcome_msg">Welcome to TechAir Hanger Management for Airports</h1>
+            <p class="caption">"Your trusted partner in advanced airport hangar management solutions."</p>
+        </div>
+        <a id="loginButton" href="@Url.Action("Index", "Login")">Login</a>*@
 </div>
 <div class="about-bg pb-4" id="aboutus">
     <div class="d-flex flex-row justify-content-center align-items-center">
@@ -74,14 +85,14 @@
                 <!-- Wrapper for carousel items -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="~/Content/Images/1.png" class="d-block w-100 h-50" alt="Slide 1" />
+                        <img src="~/Content/Images/1.png" class="d-block w-100 h-50 car-img" alt="Slide 1" />
 
                     </div>
                     <div class="carousel-item">
-                        <img src="~/Content/Images/2.png" class="d-block w-100 h-50" alt="Slide 2">
+                        <img src="~/Content/Images/2.png" class="d-block w-100 h-50 car-img" alt="Slide 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://www.researchgate.net/profile/Janakiram-Karlapudi/publication/339326067/figure/fig3/AS:859870202966018@1582020440365/Pre-Engineered-Hangar-Structure-8_Q320.jpg" class="d-block w-100 h-50" alt="Slide 3">
+                        <img src="https://www.researchgate.net/profile/Janakiram-Karlapudi/publication/339326067/figure/fig3/AS:859870202966018@1582020440365/Pre-Engineered-Hangar-Structure-8_Q320.jpg" class="d-block w-100 h-50 car-img" alt="Slide 3">
                     </div>
                 </div>
 

@@ -172,8 +172,10 @@
     <Content Include="Content\Images\3.png" />
     <Content Include="Content\Images\Airport_Hanger2.jpg" />
     <Content Include="Content\Images\allotingplanes.jpg" />
+    <Content Include="Content\Images\avd.jpg" />
     <Content Include="Content\Images\Capture.PNG" />
     <Content Include="Content\Images\getstatus.jpg" />
+    <Content Include="Content\Images\MicrosoftTeams-image %281%29.png" />
     <Content Include="Content\Images\Untitled-design-38.jpg" />
     <Content Include="Content\Pilot\PilotStyles.css" />
     <Content Include="favicon.ico" />

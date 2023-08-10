@@ -1,5 +1,166 @@
-﻿body {
+﻿.form {
+    font-family: 'Times New Roman';
 }
+
+.back {
+    background-image: url('../images/skybackground.jpg');
+}
+
+}
+
 .field-validation-error {
     color: red;
+}
+
+
+
+.add-plane-btn {
+    margin-right: 40px; /* Adjust the margin value as needed */
+}
+
+
+
+.card-body {
+    justify-content: center;
+}
+
+
+
+.marginclass {
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+.Gender-textbox {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    height: 45px;
+    padding: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+.custom-textbox {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    height: 35px;
+    padding: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+    .custom-textbox:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        outline: none;
+    }
+
+
+
+
+
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+
+
+.custom-button-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+
+
+.custom-button-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+
+
+.custom-button:hover {
+    background-color: #fca86c;
+    color: #fff;
+}
+
+
+
+.custom-button:active {
+    background-color: #003366;
+}
+
+
+
+.status-message {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    color: green;
+}
+
+
+
+.status-message {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    color: green;
+}
+
+.card {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+
+
+.custom-textbox:focus,
+.Gender-textbox:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+.pilotform{
+    height:100vh;
+}
+/* PilotStyles.css */
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out forwards;
 }
