@@ -43,7 +43,8 @@ namespace AirportManagement.Controllers
                         {
                             st = readData.Result;
                             ViewBag.msg = st;
-                            return View(ap);
+                            ModelState.Clear();
+                            return View();
                         }
                     }
                 }

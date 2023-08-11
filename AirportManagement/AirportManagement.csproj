@@ -141,6 +141,7 @@
     <Compile Include="Models\Entities\Booking.cs" />
     <Compile Include="Models\Entities\GetAvailableHangers.cs" />
     <Compile Include="Models\Entities\GetAvailablePlanes.cs" />
+    <Compile Include="Models\Entities\GetHangers.cs" />
     <Compile Include="Models\Entities\Hanger.cs" />
     <Compile Include="Models\Entities\LoginCls.cs" />
     <Compile Include="Models\Entities\LoginFromApi.cs" />
@@ -200,6 +201,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\MyScripts\EmailBlur.js" />
     <Content Include="Scripts\MyScripts\GetHangerStatus.js" />
+    <Content Include="Scripts\MyScripts\GetPlanes.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

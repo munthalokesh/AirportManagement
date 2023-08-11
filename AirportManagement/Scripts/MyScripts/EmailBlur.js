@@ -14,6 +14,7 @@
             contentType: "application/json;charset=utf-8",
             success: function (data) {
                 if (data != null) {
+                    $('#ownerNotFoundModal').modal('hide');
                     $('#HouseNo').val(data.HouseNo);
                     $('#City').val(data.City);
                     $('#State').val(data.State);
@@ -32,7 +33,7 @@
             error: function (x, err) {
                 //alert(x.readyState);
                 //alert(x.responseText);
-                alert("Owner not found kindly please enter the details")
+                 $('#ownerNotFoundModal').modal('show');
                 $('#HouseNo').val("");
                 $('#City').val("");
                 $('#State').val("");
