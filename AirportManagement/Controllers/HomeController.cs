@@ -32,5 +32,9 @@ namespace AirportManagement.Controllers
         {
             return View();
         }
+        public ActionResult Testimonial()
+        {
+            return View();
+        }
     }
 }

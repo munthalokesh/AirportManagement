@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,47 +9,53 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/Scripts/MyScripts/GetPlanes.js"></script>
+    <script src="https://kit.fontawesome.com/bb109f0f8b.js" crossorigin="anonymous"></script>
 
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - TechAir</title>
     <link href="~/Content/HomePage/homepage.css" rel="stylesheet" />
-    <link href="~/Content/HomePage/ServicesStyles.css" rel="stylesheet" />
+
+    <link href="~/Content/HomePage/navstyles.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
             @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>*@
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>*@
             @*<div class="navbar fixed-top d-sm-inline-flex justify-content-between">
-                <a href="#HomeSection" class="nav-link">About Us</a>
-                <a href="#aboutus" class="nav-link">About Us</a>
-                <ul class="navbar-nav flex-grow-1">
+                        <a href="#HomeSection" class="nav-link">About Us</a>
+                        <a href="#aboutus" class="nav-link">About Us</a>
+                        <ul class="navbar-nav flex-grow-1">
 
-                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-        <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
-            </div>*@
-        <nav class="navbar fixed-top navbar-light bg-dark nav-style">
-            <div>
-                <a class="navbar-brand"  href="@Url.Action("Index", "Home")">
-                    <img src="https://onewave.techwave.net/assets/images/TW_nimonic.png" width="50" height="50" class="d-inline-block align-top" alt="">
-                    <span class="name">TechAir</span>
-                </a>
-                <a class="navbar-brand" href="@Url.Action("Index", "Home")">Home</a>
-                @*<a class="navbar-brand" href="#aboutus">About Us</a>*@
-            </div>
-            <div>
-                <a class="navbar-brand" href="@Url.Action("Index", "Login")">Login</a>
-            </div>
-        </nav>
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        </ul>
+                    </div>*@
+            <nav class="navbar fixed-top navbar-light bg-dark nav-style">
+                <div>
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                        <img src="https://onewave.techwave.net/assets/images/TW_nimonic.png" width="50" height="50" class="d-inline-block align-top" alt="">
+                        <span class="name">TechAir</span>
+                    </a>
+                    <a class="navbar-brand hoverable" href="@Url.Action("Index", "Home")">Home</a>
+                    @*<a class="navbar-brand" href="#aboutus">About Us</a>*@
+                </div>
+                <div class="profile-icon">
+                    <img src="~/Content/Images/icons8-male-user-50.png" class="login-icon" />
+
+                    <a class="navbar-brand login text-center hoverable" href="@Url.Action("Index", "Login")">Login</a>
+
+                </div>
+            </nav>
         </div>
     </nav>
-    <div class="homepage mt-5">
+    <div class="homepage">
         @RenderBody()
         <hr />
         <footer class="text-center">
@@ -59,6 +66,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-   
+
 </body>
 </html>

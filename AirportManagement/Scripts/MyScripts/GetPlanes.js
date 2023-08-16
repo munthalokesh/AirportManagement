@@ -1,34 +1,48 @@
 ﻿$(function () {
-    
-    
+
+
     //Detect changes in the email field
     $("#GetAvailablePlanes").click(function () {
         var selectedRadio = $("input[name='Book']:checked");
 
         if (selectedRadio.length > 0) {
-            var HangerId = $("#Book").val();
+            var HangerId = selectedRadio.val();
             //alert(email);
             // Perform validation or other checks if needed
             // Then send the email value to the controller using AJAX
-            alert(HangerId);
+            /*alert(HangerId);*/
             var fromdate = $("input[name='fromdate']").val();
             var todate = $("input[name='todate']").val();
+            alert("Todate"+todate);
             alert(fromdate + todate);
-            alert($("input[name='L" + HangerId + "']").val());
+            if (todate == "") {
+                todate = fromdate
+            }
 
+            document.querySelector('.spinner-container').style.display = 'flex';
+            document.querySelector('.center-content').style.display = 'none';
+            alert("https://localhost:44328/Hanger/GetPlanes?FromDate=" + fromdate + "&ToDate=" + todate);
+            var dateObject = {
+                "FromDate": fromdate,
+                "ToDate": todate,
+                
+            };
             $.ajax({
-                url: "/Hanger/GetPlanes?FromDate=" + fromdate + "&ToDate=" + todate,
-                type: 'Get',
+                url: "https://localhost:44328/Hanger/GetPlanes?FromDate=" + fromdate + "&ToDate=" + todate,
+                type: 'GET',
+                data: JSON.stringify(dateObject),
+
                 dataType: "json",
                 contentType: "application/json;charset=utf-8",
                 success: function (data) {
                     var successModel = $("#successModal");
                     var modalBody = $('#successModal .modal-body');
                     modalBody.empty();
-
+                    document.querySelector('.spinner-container').style.display = 'none';
+                    document.querySelector('.center-content').style.display = 'flex';
                     if (data != null && data.length > 0) {
-                        var location = "<p>" + $("input[name='L" + HangerId + "']").val() + "</p>";
-                        var capacity = "<p>" + HangerId + "</p>";
+                        var location = "<p><span class=label>Hanger Location: </span>" + $("input[name='L" + HangerId + "']").val() + "</p>";
+                        var capacity = "<p><span class=label>Hanger Id: </span> " + HangerId + "</p>";
 
                         modalBody.append(location);
                         modalBody.append(capacity);
@@ -45,6 +59,8 @@
                         $('#successModal').modal('show');
                     }
                     else {
+                        document.querySelector('.spinner-container').style.display = 'none';
+                        document.querySelector('.center-content').style.display = 'flex';
                         var modalBody = $('#errorModal .modal-body');
                         modalBody.empty();
                         modalBody.append("No Plane Available between " + fromdate + " to " + todate);
@@ -53,9 +69,11 @@
                     }
                 },
                 error: function (x, err) {
+                    document.querySelector('.spinner-container').style.display = 'none';
+                    document.querySelector('.center-content').style.display = 'flex';
                     var modalBody = $('#errorModal .modal-body');
                     modalBody.empty();
-                    modalBody.append("Error occured unable to book hanger");
+                    modalBody.append("No Planes available between selected dates");
                     $('#successModal').modal('hide');
                     $('#errorModal').modal('show');
                     alert(x.readyState);
@@ -76,7 +94,7 @@
         }
     });
     $("#BookHanger").click(function () {
-        alert("hiii");
+        /*alert("hiii");*/
         if ($("#selectPlaneId").val() == " ") {
             $("#selectPlane").removeClass("d-none");
         }
@@ -85,7 +103,9 @@
             var fromdate = $("input[name='fromdate']").val();
             var todate = $("input[name='todate']").val();
             var planeId = $("#selectPlaneId").val()
-            
+            if (todate == "") {
+                todate = fromdate
+            }
             var selectedRadio = $("input[name='Book']:checked");
             var hangerId = selectedRadio.val();
             var jsonObject = {
@@ -94,6 +114,8 @@
                 "planeId": planeId,
                 "hangerId": hangerId
             };
+            document.querySelector('.spinner-container').style.display = 'flex';
+            document.querySelector('.center-content').style.display = 'none';
             $.ajax({
                 url: "/Hanger/BookHanger",
                 type: 'Post',
@@ -101,6 +123,9 @@
                 data: JSON.stringify(jsonObject),
                 contentType: "application/json;charset=utf-8",
                 success: function (data) {
+                    /*alert("sucess");*/
+                    document.querySelector('.spinner-container').style.display = 'none';
+                    document.querySelector('.center-content').style.display = 'flex';
                     var modalBody = $('#errorModal .modal-body');
                     modalBody.empty();
                     modalBody.append("<p>" + data + "</p>");
@@ -109,6 +134,8 @@
 
                 },
                 error: function (x, err) {
+                    document.querySelector('.spinner-container').style.display = 'none';
+                    document.querySelector('.center-content').style.display = 'flex';
                     var modalBody = $('#errorModel .modal-body');
                     modalBody.empty();
                     modalBody.append("<p>unable to book</p>")
@@ -116,110 +143,40 @@
                     $("#errorModal").modal('show');
                 }
             });
-            
-            
-       }
+
+
+        }
     })
-    //select.on("click",function () {
-    //    alert("Hi");
-    //    var fromdate = $("input[name='fromdate']").val();
-    //    var todate = $("input[name='todate']").val();
-    //    alert(fromdate + todate);
-    //        $.ajax({
-    //            url: "/Hanger/GetPlanes?FromDate=" + fromdate + "&ToDate=" + todate,
-    //            type: 'Get',
-    //            dataType: "json",
-    //            contentType: "application/json;charset=utf-8",
-    //            success: function (data) {
-    //                var successModel = $("#successModal");
-    //                var modalBody = $('#successModal .modal-body');
-    //                select.empty();
-
-    //                if (data != null) {
-
-
-
-    //                    alert(data.length);
-                        
-    //                    select.append("<option value=' '>Select a plane</option>")
-    //                    for (var i = 0; i < data.length; i++) {
-    //                        select.append("<option value='" + data[i].PlaneId + "'>" + data[i].PlaneId + "</option>");
-    //                    }
-
-
-    //                    $('#errorModal').modal('hide');
-                        
-    //                }
-    //                else {
-    //                    var modalBody = $('#errorModal .modal-body');
-    //                    modalBody.append("No Plane Available between " + fromdate + " to " + todate);
-    //                    $('#successModal').modal('hide');
-    //                    $('#errorModal').modal('show');
-    //                }
-    //            },
-    //            error: function (x, err) {
-    //                var modalBody = $('#errorModal .modal-body');
-    //                modalBody.append("No Plane Available between " + fromdate + " to " + todate);
-    //                $('#successModal').modal('hide');
-    //                $('#errorModal').modal('show');
-    //                alert(x.readyState);
-    //                alert(x.responseText);
-
-
-
-    //            }
-
-    //        });
-    //});
-    //$("#selectPlaneId").click(function () {
-    //    alert("hi");
-    //    //var fromdate = $("input[name='fromdate']").val();
-    //    //var todate = $("input[name='todate']").val();
-    //    //alert(fromdate + todate);
-    //    //    $.ajax({
-    //    //        url: "/Hanger/GetPlanes?FromDate=" + fromdate + "&ToDate=" + todate,
-    //    //        type: 'Get',
-    //    //        dataType: "json",
-    //    //        contentType: "application/json;charset=utf-8",
-    //    //        success: function (data) {
-    //    //            var successModel = $("#successModal");
-    //    //            var modalBody = $('#successModal .modal-body');
-    //    //            modalBody.empty();
-
-    //    //            if (data != null) {
-                        
-
-                        
-                        
-    //    //                $("#SelectedPlaneId").empty();
-    //    //                select.append("<option value=' '>Select a plane</option>")
-    //    //                for (var i = 0; i < data.length; i++) {
-    //    //                    select.append("<option value='" + data[i].PlaneId + "'>" + data[i].PlaneId + "</option>");
-    //    //                }
-
-                        
-    //    //                $('#errorModal').modal('hide');
-    //    //                $('#successModal').modal('show');
-    //    //            }
-    //    //            else {
-    //    //                var modalBody = $('#errorModal .modal-body');
-    //    //                modelBody.append("No Plane Available between " + fromdate + " to " + todate);
-    //    //                $('#successModal').modal('hide');
-    //    //                $('#errorModal').modal('show');
-    //    //            }
-    //    //        },
-    //    //        error: function (x, err) {
-    //    //            var modalBody = $('#errorModal .modal-body');
-    //    //            modalBody.append("No Plane Available between " + fromdate + " to " + todate);
-    //    //            $('#successModal').modal('hide');
-    //    //            $('#errorModal').modal('show');
-    //    //            alert(x.readyState);
-    //    //            alert(x.responseText);
-
-
-
-    //    //        }
-
-    //    //    });
-    //})
 })
+
+function CheckDates() {
+    var fromdate = $("#GetFromDate");
+    var todate = $("#GetToDate");
+    var modal = $("#DateErrorModal");
+    var modalBody = modal.find('.modal-body');
+    var currentDate = new Date();
+    /*alert(fromdate.val() + " " + currentDate);*/
+    if (fromdate.val() === "") {
+        modal.modal('show');
+        modalBody.html("<p>Please select a From Date.</p>");
+        return false;
+    } 
+    else if (new Date(fromdate.val()) < currentDate)
+    {
+        modal.modal('show');
+        modalBody.html("<p>FromDate cannot be less than today's date</p>");
+        return false;
+    }
+    else if (todate.val() != "") {
+        if (todate.val() < fromdate.val()) {
+            modal.modal('show');
+            modalBody.html("<p>ToDate should not be less than  fromdate</p>");
+            return false;
+        }
+    }
+    else {
+        modal.modal('hide');
+        modalBody.html("");
+        return true;
+    }
+}

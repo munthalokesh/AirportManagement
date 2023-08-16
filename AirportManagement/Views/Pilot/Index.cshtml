@@ -2,11 +2,11 @@
 @{
     ViewBag.Title = "Index";
 }
-<section style="background-color: grey;" class="pilotform">
-    <div class="container">
+<section class="pilotform">
+    <div class="container pt-5">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-8 col-lg-6 col-xl-7 mt-3 mb-3">
-                <div class="card" style="border-radius: 15px;">
+                <div class="form-card mb-4" style="border-radius: 15px;">
                     <div class="card-body marginclass" id="myForm">
                         @using (Html.BeginForm())
                         {
@@ -17,17 +17,17 @@
                                     <!-- ... (Existing code for the first part of the form) ... -->
                                     <div class="row align-items-center pt-2 slide-in">
                                         <div class="col-md-12">
-                                            <h6 class="mb-1">@Html.Label("PilotName")<span class="text-danger">*</span></h6>
+                                            <h6 class="mb-1 label">@Html.Label("Pilot Name")<span class="text-danger">*</span></h6>
                                             @Html.TextBox("PilotName", null, new { @class = "custom-textbox" })
                                         </div>
                                         <div class="col-md-12">
                                             @Html.ValidationMessage("PilotName")
                                         </div>
-                                    
+
                                         <div class="row align-items-center pt-2">
                                             <div class="col-md-12">
-                                                <h6 class="mb-1">@Html.Label("LicenseNo")<span class="text-danger">*</span></h6>
-                                                @Html.TextBox("LicenseNo",null, new { @class = "custom-textbox" })
+                                                <h6 class="mb-1 label">@Html.Label("License Number")<span class="text-danger">*</span></h6>
+                                                @Html.TextBox("LicenseNo", null, new { @class = "custom-textbox" })
                                             </div>
                                             <div class="col-md-12">
                                                 @Html.ValidationMessage("LicenseNo")
@@ -35,8 +35,8 @@
                                         </div>
                                         <div class="row align-items-center pt-2">
                                             <div class="col-md-12">
-                                                <h6 class="mb-1">@Html.Label("SocialSecurityNo")<span class="text-danger">*</span></h6>
-                                                @Html.TextBox("SocialSecurityNo",null, new { @class = "custom-textbox" })
+                                                <h6 class="mb-1 label">@Html.Label("Social Security Number")<span class="text-danger">*</span></h6>
+                                                @Html.TextBox("SocialSecurityNo", null, new { @class = "custom-textbox" })
                                             </div>
                                             <div class="col-md-12">
                                                 @Html.ValidationMessage("SocialSecurityNo")
@@ -44,8 +44,8 @@
                                         </div>
                                         <div class="row align-items-center pt-2">
                                             <div class="col-md-12">
-                                                <h6 class="mb-1">@Html.Label("DateOfBirth")<span class="text-danger">*</span></h6>
-                                                @Html.TextBox("DateOfBirth",null, new { @class = "custom-textbox" })
+                                                <h6 class="mb-1 label">@Html.Label("Date Of Birth")<span class="text-danger">*</span></h6>
+                                                @Html.TextBox("DateOfBirth", null, new { @class = "custom-textbox", type = "date" })
                                             </div>
                                             <div class="col-md-12">
                                                 @Html.ValidationMessage("DateOfBirth")
@@ -53,10 +53,10 @@
                                         </div>
                                         <div class="row align-items-center pt-2">
                                             <div class="col-md-12">
-                                                <h6 class="mb-1">@Html.Label("Gender")<span class="text-danger">*</span></h6>
+                                                <h6 class="mb-1 label">@Html.Label("Gender")<span class="text-danger">*</span></h6>
                                                 @Html.DropDownList("Gender", new List<SelectListItem>
-                                                                                                                                                                    {
-                                                new SelectListItem { Value = "Select", Text = "Select" },
+                                         {
+                                                new SelectListItem { Value = "", Text = "Select" },
                                                 new SelectListItem { Value = "Male", Text = "Male" },
                                                 new SelectListItem { Value = "Female", Text = "Female" },
                                                 new SelectListItem { Value = "Others", Text = "Others" }
@@ -68,8 +68,8 @@
                                         </div>
                                         <div class="row align-items-center pt-2">
                                             <div class="col-md-12">
-                                                <h6 class="mb-1">@Html.Label("MobileNo")<span class="text-danger">*</span></h6>
-                                                @Html.TextBox("MobileNo",null, new { @class = "custom-textbox" })
+                                                <h6 class="mb-1 label">@Html.Label("Mobile Number")<span class="text-danger">*</span></h6>
+                                                @Html.TextBox("MobileNo", null, new { @class = "custom-textbox" })
                                             </div>
                                             <div class="col-md-12">
                                                 @Html.ValidationMessage("MobileNo")
@@ -77,8 +77,8 @@
                                         </div>
                                         <div class="row align-items-center pt-2">
                                             <div class="col-md-12">
-                                                <h6 class="mb-1">@Html.Label("EmailAddress")<span class="text-danger">*</span></h6>
-                                                @Html.TextBox("EmailAddress",null, new { @class = "custom-textbox" })
+                                                <h6 class="mb-1 label">@Html.Label("Email Address")<span class="text-danger">*</span></h6>
+                                                @Html.TextBox("EmailAddress", null, new { @class = "custom-textbox" })
                                             </div>
                                             <div class="col-md-12">
                                                 @Html.ValidationMessage("EmailAddress")
@@ -90,15 +90,15 @@
 
 
                                 <!-- Second Part of the Form (Right Column) -->
-                                <div class="col-md-6">
+                                <div class="col-md-6 slide-in">
                                     <!-- ... (Existing code for the second part of the form) ... -->
 
 
 
                                     <div class="row align-items-center pt-2">
                                         <div class="col-md-12">
-                                            <h6 class="mb-1">@Html.Label("HouseNo")<span class="text-danger">*</span></h6>
-                                            @Html.TextBox("HouseNo",null, new { @class = "custom-textbox" })
+                                            <h6 class="mb-1 label">@Html.Label("House Number")<span class="text-danger">*</span></h6>
+                                            @Html.TextBox("HouseNo", null, new { @class = "custom-textbox" })
                                         </div>
                                         <div class="col-md-12">
                                             @Html.ValidationMessage("HouseNo")
@@ -106,8 +106,8 @@
                                     </div>
                                     <div class="row align-items-center pt-2">
                                         <div class="col-md-12">
-                                            <h6 class="mb-1">@Html.Label("City")<span class="text-danger">*</span></h6>
-                                            @Html.TextBox("City",null, new { @class = "custom-textbox" })
+                                            <h6 class="mb-1 label">@Html.Label("City")<span class="text-danger">*</span></h6>
+                                            @Html.TextBox("City", null, new { @class = "custom-textbox" })
                                         </div>
                                         <div class="col-md-12">
                                             @Html.ValidationMessage("City")
@@ -115,8 +115,8 @@
                                     </div>
                                     <div class="row align-items-center pt-2">
                                         <div class="col-md-12">
-                                            <h6 class="mb-1">@Html.Label("State")<span class="text-danger">*</span></h6>
-                                            @Html.TextBox("State",null, new { @class = "custom-textbox" })
+                                            <h6 class="mb-1 label">@Html.Label("State")<span class="text-danger">*</span></h6>
+                                            @Html.TextBox("State", null, new { @class = "custom-textbox" })
                                         </div>
                                         <div class="col-md-12">
                                             @Html.ValidationMessage("State")
@@ -124,8 +124,8 @@
                                     </div>
                                     <div class="row align-items-center pt-2">
                                         <div class="col-md-12">
-                                            <h6 class="mb-1">@Html.Label("Country")<span class="text-danger">*</span></h6>
-                                            @Html.TextBox("Country",null, new { @class = "custom-textbox" })
+                                            <h6 class="mb-1 label">@Html.Label("Country")<span class="text-danger">*</span></h6>
+                                            @Html.TextBox("Country", null, new { @class = "custom-textbox" })
                                         </div>
                                         <div class="col-md-12">
                                             @Html.ValidationMessage("Country")
@@ -133,8 +133,8 @@
                                     </div>
                                     <div class="row align-items-center pt-2">
                                         <div class="col-md-12">
-                                            <h6 class="mb-1">@Html.Label("PinNo")<span class="text-danger">*</span></h6>
-                                            @Html.TextBox("PinNo",null, new { @class = "custom-textbox" })
+                                            <h6 class="mb-1 label">@Html.Label("Pincode")<span class="text-danger">*</span></h6>
+                                            @Html.TextBox("PinNo", null, new { @class = "custom-textbox" })
                                         </div>
                                         <div class="col-md-12">
                                             @Html.ValidationMessage("PinNo")
@@ -142,8 +142,8 @@
                                     </div>
                                     <div class="row align-items-center pt-2">
                                         <div class="col-md-12">
-                                            <h6 class="mb-1">@Html.Label("AddressLine")<span class="text-danger">*</span></h6>
-                                            @Html.TextArea("AddressLine", null,new { @class = "custom-textbox" })
+                                            <h6 class="mb-1 label">@Html.Label("AddressLine")<span class="text-danger">*</span></h6>
+                                            @Html.TextArea("AddressLine", null, new { @class = "custom-textarea" })
                                         </div>
                                         <div class="col-md-12">
                                             @Html.ValidationMessage("AddressLine")
@@ -170,8 +170,8 @@
                             {
                                 <div class="row justify-content-center mt-3">
                                     <div class="col-md-8 text-center">
-                                        <div class="status-message">
-                                            <p class="status-message text-danger">@ViewBag.msg</p>
+                                        <div class="status-message text-center">
+                                            <p class="status-message text-danger text-center">@ViewBag.msg</p>
                                         </div>
                                     </div>
                                 </div>

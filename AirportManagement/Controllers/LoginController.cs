@@ -37,15 +37,24 @@ namespace AirportManagement.Controllers
 
                         if (loginFromApi != null)
                         {
-                            Session["email"] = loginFromApi.Email;
-                            Session["type"] = loginFromApi.type;
-                            if (loginFromApi.type == "Admin")
+                            bool passwordsMatch = l.password == loginFromApi.password;
+                            if (passwordsMatch)
                             {
-                                return RedirectToAction("Home", "Admin");
+                                Session["email"] = loginFromApi.Email;
+                                Session["type"] = loginFromApi.type;
+                                if (loginFromApi.type == "Admin")
+                                {
+                                    return RedirectToAction("Home", "Admin");
+                                }
+                                else
+                                {
+                                    return RedirectToAction("Home", "Manager");
+                                }
                             }
                             else
                             {
-                                return RedirectToAction("Home", "Manager");
+                                ViewBag.msg = "Invalid credentials";
+                                return View();
                             }
                         }
                         else

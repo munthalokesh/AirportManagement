@@ -1,12 +1,13 @@
-﻿
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+﻿﻿@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300&family=Open+Sans&family=Roboto+Mono:wght@500&family=Roboto:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;1,300&display=swap');
+
 body {
     margin: 0px;
     padding: 0px;
 }
+
 .home_section {
     /*background-image: url("https://keystoneacademic-res.cloudinary.com/image/upload/element/11/116553_photo-1542296332-2e4473faf563.jpg");*/
     /* Full height */
@@ -16,24 +17,25 @@ body {
     background-size: cover;
     position: relative;*/ /* Change to relative positioning */
     /*z-index: -1;*/
+
     position: relative;
     width: 100%;
-   
 }
-}
-.homepage{
-    margin-top:120px;
-    margin-right:0px;
-    margin-left:0px;
-    padding:0px;
+
+
+
+.homepage {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 0px;
 }
 
 .welcome_msg {
     font-family: 'Open Sans', sans-serif;
     color: #e9ecf2;
-    text-shadow:unset;
+    text-shadow: unset;
     font-weight: bold;
-    font-size:45px;
+    font-size: 45px;
 }
 /*.welcome_container{
     display:flex;
@@ -53,6 +55,7 @@ body {
         transform: translateY(0); /* Move back to original position */
     }
 }
+
 #loginButton {
     display: inline-block;
     padding: 10px 20px;
@@ -66,10 +69,10 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     text-decoration: none;
-    cursor:pointer;
+    cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     text-decoration: none;
-    z-index:1;
+    z-index: 1;
 }
 
     #loginButton:hover {
@@ -80,9 +83,9 @@ body {
 .about-section {
     max-width: 1000px;
     margin: 30px auto;
-    margin-left:20px;
+    margin-left: 20px;
     padding: 20px;
-    font-weight:bold;
+    font-weight: bold;
     background-color: transparent;
     /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index:1;*/
@@ -102,6 +105,7 @@ body {
     font-weight: bold;
     color: #333;
 }
+
 .about-section p {
     margin-bottom: 15px;
 }
@@ -111,20 +115,20 @@ body {
     margin-bottom: 15px;
 }
 
-.caption
-{
+.caption {
     font-family: sans-serif;
-    color:azure;
-    font-style:italic;
+    color: azure;
+    font-style: italic;
 }
-.car-container
-{
+
+.car-container {
     width: 37%;
-    margin:20px;
-    margin-right:20px;
+    margin: 20px;
+    margin-right: 20px;
     padding-top: 30px;
-    height:25%;
+    height: 25%;
 }
+
 .about-bg {
     background-color: #e3dedc;
     /*background-image: url("https://schwarzmann.eu/wp-content/uploads/2020/09/aircraft-hangar-garage-vienna-2-scaled.jpg.webp");*/
@@ -132,8 +136,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
     .about-bg::before {
-        content:"";
+        content: "";
         opacity: 0.2; /* Adjust the opacity value as needed */
         z-index: -1;
     }
@@ -157,10 +162,11 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.button-style:hover {
-    background-color: darkslateblue;
-    color: ghostwhite;
-}
+    .button-style:hover {
+        background-color: darkslateblue;
+        color: ghostwhite;
+    }
+
 .name {
     font-size: 30px;
     font-family: 'Open Sans', sans-serif;
@@ -174,7 +180,6 @@ body {
     font-family: 'Merriweather', serif;
     /* color: #e9ecf2;*/
     color: black;
-    
     font-weight: bold;
     font-size: 40px;
     position: absolute;
@@ -186,7 +191,6 @@ body {
     font-family: 'Open Sans', sans-serif;
     /*color: #e9ecf2;*/
     color: black;
-    
     font-size: 20px;
     font-style: italic;
     position: absolute;
@@ -217,7 +221,7 @@ body {
     border-radius: 10px;
     /*background-color:rgb(255, 255, 255,0.3);*/
     background-color: rgb(0,0,0,0.2);
-    padding-top:20px;
+    padding-top: 20px;
 }
 
 
@@ -235,7 +239,7 @@ body {
     border: 0.2px solid gray;
     border-radius: 5px;
     height: 40px;
-    width:250px;
+    width: 250px;
 }
 
 .login-label {
@@ -271,16 +275,14 @@ body {
 }
 
 .imagelogo {
-    
     margin-top: 15%;
     width: 90px;
     height: 90px;
     border-radius: 50%;
 }
-.car-img
-{
-    
-    border-radius:15px;
+
+.car-img {
+    border-radius: 15px;
 }
 
 
@@ -327,10 +329,11 @@ body {
 
 .login-container {
     /*background-image: url('../images/microsoftteams-image (1).png');*/
-    
+
     background-size: cover;
-    height:100vh;
+    height: 100vh;
 }
+
 .home_section {
     position: relative;
     width: 100%;
@@ -399,4 +402,41 @@ body {
     min-width: 100%;
     min-height: 100%;
 }
-    
+
+.login-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    color: white;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 50px;
+    width: 100px;
+    background-color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.profile-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+    .profile-icon:hover .dropdown {
+        display: block;
+    }
+
+.login {
+    color: red;
+}

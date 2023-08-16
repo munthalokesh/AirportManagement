@@ -1,4 +1,4 @@
-﻿.services {
+﻿﻿﻿.services {
     margin: 0;
     padding: 48px 0;
     font-family: "Figtree", sans-serif;
@@ -15,7 +15,6 @@
     padding-inline: 24px;
     grid-template-columns: repeat(3, 1fr);
     gap: 70px;
-    
 }
 
 
@@ -130,8 +129,7 @@ article:has(:hover, :focus) {
     white-space: nowrap;
     width: 1px;
 }
-.our-services
-{
-    margin-bottom:30px;
 
+.our-services {
+    margin-bottom: 30px;
 }

@@ -8,7 +8,7 @@
         <source src="https://assets.mixkit.co/videos/preview/mixkit-outside-a-plane-window-4203-large.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
-    @using (Html.BeginForm("Enter", "Loginclient"))
+    @using (Html.BeginForm())
 
 
 
@@ -17,15 +17,17 @@
 
         <div class=" animated-text">
             <p class="p1">Where Dreams Take Flight and Find Shelter</p>
-            <p class="p2">Customer first <span class="material-symbols-outlined">
-    star
-</span> Innovation</p>
+            <p class="p2">
+                Customer first <span class="material-symbols-outlined">
+                    star
+                </span> Innovation
+            </p>
         </div>
-        <div class="div1 d-flex flex-column align-items-center" >
+        <div class="div1 d-flex flex-column align-items-center">
             <div class="text-center">
                 <img src="~/Content/Images/avd.jpg" class="imagelogo" />
             </div>
-            
+
 
             <table>
                 <tr>
@@ -52,6 +54,14 @@
                 <tr>
                     <td><input type="submit" value="Login" id="btnlogin" /> </td>
                 </tr>
+                <tr>
+                    <td>
+                        @if (ViewBag.msg != null)
+                        {
+                            <p class="message">@ViewBag.msg</p>
+                        }
+                    </td>
+                </tr>
             </table>
         </div>
 
@@ -59,9 +69,6 @@
 
 
 
-        if (ViewBag.msg != null)
-        {
-            <p class="message">@ViewBag.msg</p>
-        }
+
     }
 </div>

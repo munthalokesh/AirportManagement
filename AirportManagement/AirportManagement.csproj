@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgeValidationAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -133,6 +134,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BussinessLayer\AddingHanger.cs" />
+    <Compile Include="Models\BussinessLayer\AddingPilot.cs" />
+    <Compile Include="Models\BussinessLayer\AddingPlane.cs" />
     <Compile Include="Models\DataLayer\CustomDateValidationAttribute.cs" />
     <Compile Include="Models\Entities\AddHanger.cs" />
     <Compile Include="Models\Entities\AddPilot.cs" />
@@ -149,6 +153,8 @@
     <Compile Include="TypeAuthorizationAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin\AdminHome.css" />
+    <Content Include="Content\Admin\formstyles.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -167,6 +173,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\HomePage\HomeLayout.css" />
     <Content Include="Content\HomePage\homepage.css" />
+    <Content Include="Content\HomePage\navstyles.css" />
     <Content Include="Content\HomePage\ServicesStyles.css" />
     <Content Include="Content\Images\1.png" />
     <Content Include="Content\Images\2.png" />
@@ -176,9 +183,11 @@
     <Content Include="Content\Images\avd.jpg" />
     <Content Include="Content\Images\Capture.PNG" />
     <Content Include="Content\Images\getstatus.jpg" />
+    <Content Include="Content\Images\icons8-male-user-50.png" />
     <Content Include="Content\Images\MicrosoftTeams-image %281%29.png" />
+    <Content Include="Content\Images\quote-left %281%29.png" />
     <Content Include="Content\Images\Untitled-design-38.jpg" />
-    <Content Include="Content\Pilot\PilotStyles.css" />
+    <Content Include="Content\Manager\ManagerHome.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -188,6 +197,8 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Admin\StyleSheet1.less" />
+    <Content Include="Content\Manager\StyleSheet1.less" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -229,10 +240,10 @@
     <Content Include="Views\Admin\Home.cshtml" />
     <Content Include="Views\Manager\Home.cshtml" />
     <Content Include="Views\Hanger\GetStatus.cshtml" />
+    <Content Include="Views\Home\Testimonial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\BussinessLayer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

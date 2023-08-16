@@ -6,9 +6,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AirportManagement.Models.Entities;
+using AirportManagement.Models.BussinessLayer;
 
 namespace AirportManagement.Controllers
 {
+    [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
     [TypeAuthorization("Admin")]
     public class PlaneController : Controller
     {
@@ -18,6 +20,7 @@ namespace AirportManagement.Controllers
             return View();
         }
         [HttpPost]
+        [TypeAuthorization("Admin")]
         public ActionResult Index(AddPlane ap, string PlaneBtn)
         {
             if (PlaneBtn == "AddPlane")
@@ -25,6 +28,8 @@ namespace AirportManagement.Controllers
                 if (ModelState.IsValid)
                 {
                     string st = "";
+                    AddingPlane addingPlane = new AddingPlane();
+                    ap = addingPlane.trim(ap);
                     using (var client = new HttpClient())
                     {
                         client.BaseAddress = new Uri("https://localhost:44338/api/");

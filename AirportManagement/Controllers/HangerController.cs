@@ -1,4 +1,5 @@
-﻿using AirportManagement.Models.Entities;
+﻿using AirportManagement.Models.BussinessLayer;
+using AirportManagement.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,6 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace AirportManagement.Controllers
 {
+    [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
     public class HangerController : Controller
     {
         // GET: Hanger
@@ -18,7 +20,7 @@ namespace AirportManagement.Controllers
         {
             return View();
         }
-
+        [TypeAuthorization("Admin")]
         [HttpPost]
         public ActionResult Index(AddHanger Ah, string HangerBtn)
         {
@@ -27,6 +29,8 @@ namespace AirportManagement.Controllers
                 if (ModelState.IsValid)
                 {
                     string st = "";
+                    AddingHanger addingHanger = new AddingHanger();
+                    Ah = addingHanger.trim(Ah);
                     using (var client = new HttpClient())
                     {
                         client.BaseAddress = new Uri("https://localhost:44338/api/");
@@ -65,23 +69,27 @@ namespace AirportManagement.Controllers
                 return View();
             }
         }
-        /*[TypeAuthorization("Manager")]*/
+        [TypeAuthorization("Manager")]
         [HttpGet]
         public ActionResult GetHangers()
         {
             return View();
         }
-
+        [TypeAuthorization("Manager")]
         [HttpPost]
-        public ActionResult GetHangers(DateTime FromDate, DateTime ToDate,GetHangers g)
+        public ActionResult GetHangers(DateTime? FromDate, DateTime? ToDate, string GetHangersBtn)
         {
-            if (ModelState.IsValid)
+            if (GetHangersBtn == "GetHangers")
             {
                 List<GetAvailableHangers> l = null;
                 TempData["fromdate"] = FromDate;
                 TempData["todate"] = ToDate;
                 TempData["fromdate1"] = FromDate;
                 TempData["todate1"] = ToDate;
+                if (!ToDate.HasValue)
+                {
+                    ToDate = FromDate;
+                }
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri("https://localhost:44338/api/");
@@ -117,10 +125,11 @@ namespace AirportManagement.Controllers
             else
             {
                 ViewBag.msg = "couldn't get Hangers";
+                ModelState.Clear();
                 return View();
             }
         }
-        /*[TypeAuthorization("Manager")]*/
+        [TypeAuthorization("Manager")]
         public ActionResult displayHangers(List<GetAvailableHangers> data)
         {
             return View(data);
@@ -181,7 +190,7 @@ namespace AirportManagement.Controllers
         {
             return View();
         }*/
-
+        [TypeAuthorization("Manager")]
         [HttpPost]
         public ActionResult BookHanger(DateTime fromdate,DateTime todate,string planeId,string hangerId)
         {
@@ -213,7 +222,7 @@ namespace AirportManagement.Controllers
                 }
             }
         }
-        /*[TypeAuthorization("Manager")]*/
+        [TypeAuthorization("Manager")]
         public ActionResult GetStatus()
         {
             List<Hanger> st = null;
@@ -269,18 +278,21 @@ namespace AirportManagement.Controllers
         //        }
         //    }
         //}
-
-        public ActionResult GetPlanes(DateTime FromDate, DateTime ToDate)
+        [TypeAuthorization("Manager")]
+        public ActionResult GetPlanes(String FromDate, String ToDate)
         {
             List<GetAvailablePlanes> l = null;
-            string formattedFromDate = FromDate.ToString("yyyy-MM-dd");
+            DateTime FD= DateTime.ParseExact(FromDate, "dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+            DateTime TD = DateTime.ParseExact(ToDate, "dd-MM-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+
+            string formattedFromDate = FD.ToString("yyyy-MM-dd");
             DateTime parsedFromDate = DateTime.ParseExact(formattedFromDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-            string formattedToDate = ToDate.ToString("yyyy-MM-dd");
+            string formattedToDate = TD.ToString("yyyy-MM-dd");
             DateTime parsedToDate = DateTime.ParseExact(formattedToDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44338/api/");
-                var query = $"HangerDetails/GetAvailablePlanes?fromdate=" + parsedFromDate + "&todate=" + parsedToDate;
+                var query = $"HangerDetails/GetAvailablePlanes?fromdate=" + FromDate + "&todate=" + ToDate;
 
 
                 var responseTask = client.GetAsync(query);

@@ -1,4 +1,5 @@
-﻿using AirportManagement.Models.Entities;
+﻿using AirportManagement.Models.BussinessLayer;
+using AirportManagement.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace AirportManagement.Controllers
 {
+    [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
     [TypeAuthorization("Admin")]
     public class PilotController : Controller
     {
@@ -25,6 +27,8 @@ namespace AirportManagement.Controllers
                 if (ModelState.IsValid)
                 {
                     string st = "";
+                    AddingPilot addingPilot = new AddingPilot();
+                    a = addingPilot.trim(a);
                     using (var client = new HttpClient())
                     {
                         client.BaseAddress = new Uri("https://localhost:44338/api/");

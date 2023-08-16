@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace AirportManagement.Controllers
 {
+    [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
     public class ManagerController : Controller
     {
         // GET: Manager
