@@ -18,7 +18,7 @@
                 if (data != null) {
                     document.querySelector('.spinner-container').style.display = 'none';
                     document.querySelector('.form-card').style.display = 'flex';
-                    alert(data.OwnerName);
+                   
                     $('#OwnerName').val(data.OwnerName);
                     $('#HouseNo').val(data.HouseNo);
                     $('#City').val(data.City);

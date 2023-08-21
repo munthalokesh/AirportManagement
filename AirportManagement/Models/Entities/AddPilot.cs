@@ -33,7 +33,7 @@ namespace AirportManagement.Models.Entities
         [RegularExpression(@"^[1-9]\d{9}$", ErrorMessage = "Please enter a valid 10-digit mobile number")]
         public string MobileNo { get; set; }
         [Required(ErrorMessage = "Enter email address")]
-        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Please enter a valid email address.")]
+        [RegularExpression(@"^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Please enter a valid email address.")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Email must be between 3 and 50 characters.")]
         public string EmailAddress { get; set; }
 

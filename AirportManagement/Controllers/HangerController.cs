@@ -84,8 +84,8 @@ namespace AirportManagement.Controllers
                 List<GetAvailableHangers> l = null;
                 TempData["fromdate"] = FromDate;
                 TempData["todate"] = ToDate;
-                TempData["fromdate1"] = FromDate;
-                TempData["todate1"] = ToDate;
+                //TempData["fromdate1"] = FromDate;
+                //TempData["todate1"] = ToDate;
                 if (!ToDate.HasValue)
                 {
                     ToDate = FromDate;
@@ -93,7 +93,8 @@ namespace AirportManagement.Controllers
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri("https://localhost:44338/api/");
-                    var query = $"HangerDetails/GetAvailableHangers?fromdate={FromDate:yyyy-MM-dd}&todate={ToDate:yyyy-MM-dd}";
+                    var query = $"HangerDetails/GetAvailableHangers?fromdate={FromDate}&todate={ToDate}";
+
 
 
                     var responseTask = client.GetAsync(query);
@@ -136,60 +137,7 @@ namespace AirportManagement.Controllers
         }
 
 
-        /*[HttpPost]
-        public ActionResult displayHangers(string Book, FormCollection form)
-        {
-            string HangerLocation = form[Book + 1];
-            string HangerId = form[Book + 2];
-            TempData["hangerlocation"] = HangerLocation;
-            TempData["hangerid"] = HangerId;
-            TempData["hangerid1"] = HangerId;
-            if (ModelState.IsValid)
-            {
-                List<GetAvailablePlanes> l = null;
-                DateTime FromDate = (DateTime)TempData["fromdate"];
-                DateTime ToDate = (DateTime)TempData["todate"];
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri("https://localhost:44338/api/");
-                    var query = $"HangerDetails/GetAvailablePlanes?fromdate={FromDate:yyyy-MM-dd}&todate={ToDate:yyyy-MM-dd}";
-
-
-                    var responseTask = client.GetAsync(query);
-                    responseTask.Wait();
-                    var result = responseTask.Result;
-                    var readData = result.Content.ReadAsAsync<List<GetAvailablePlanes>>();
-                    if (result.IsSuccessStatusCode)
-                    {
-                        l = readData.Result;
-
-                        ModelState.Clear();
-                        return View("BookHanger", l);
-                    }
-                    else
-                    {
-                        l = readData.Result;
-                        if (l == null || l.Count == 0)
-                        {
-                            l.Add(null);
-                        }
-                        ViewBag.msg = "No Plane Available in the Selected timeframe";
-                        return View();
-                    }
-                }
-            }
-            else
-            {
-                ViewBag.msg = "Select Plane";
-                return View();
-            }
-
-        }
-        [TypeAuthorization("Manager")]
-        public ActionResult BookHanger()
-        {
-            return View();
-        }*/
+      
         [TypeAuthorization("Manager")]
         [HttpPost]
         public ActionResult BookHanger(DateTime fromdate,DateTime todate,string planeId,string hangerId)
@@ -243,7 +191,8 @@ namespace AirportManagement.Controllers
                     else
 
                     {
-                        return View("NoHangers");//create view to display no hangers message
+                        ViewBag.msg="No Hangers Present";
+                        return View();//create view to display no hangers message
                     }
                 }
                 else
@@ -254,30 +203,7 @@ namespace AirportManagement.Controllers
                 }
             }
         }
-        //[HttpPost]
-        //public ActionResult GetStatus(DateTime fromdate, DateTime todate)
-        //{
-        //    List<Hanger> st = null;
-        //    using (var client = new HttpClient())
-        //    {
-        //        client.BaseAddress = new Uri("https://localhost:44338/api/");
-        //        var responseTask = client.GetAsync("HangerDetails/GetStatus");
-        //        responseTask.Wait();
-        //        var result = responseTask.Result;
-        //        var readData = result.Content.ReadAsAsync<List<Hanger>>();
-        //        if (result.IsSuccessStatusCode)
-        //        {
-        //            st = readData.Result;
-        //            return View(st);
-        //        }
-        //        else
-        //        {
-        //            st = readData.Result;
-        //            ViewBag.msg = st;
-        //            return View(st);
-        //        }
-        //    }
-        //}
+        
         [TypeAuthorization("Manager")]
         public ActionResult GetPlanes(String FromDate, String ToDate)
         {
@@ -314,6 +240,35 @@ namespace AirportManagement.Controllers
                         l.Add(null);
                     }
                     ViewBag.msg = "No Plane Available in the Selected timeframe";
+                    return Json(null, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+        public ActionResult ReloadHangers(string fromdate, string todate)
+        {
+            List<GetAvailableHangers> l = null;
+
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44338/api/");
+                var query = $"HangerDetails/GetAvailableHangers?fromdate=" + fromdate + "&todate=" + todate;
+
+
+                var responseTask = client.GetAsync(query);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                var readData = result.Content.ReadAsAsync<List<GetAvailableHangers>>();
+                if (result.IsSuccessStatusCode)
+                {
+                    l = readData.Result;
+
+                    ModelState.Clear();
+                    return Json(l, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    l = readData.Result;
                     return Json(null, JsonRequestBehavior.AllowGet);
                 }
             }

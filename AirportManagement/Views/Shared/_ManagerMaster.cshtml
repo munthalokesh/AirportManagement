@@ -11,7 +11,15 @@
     <script src="~/Scripts/MyScripts/GetPlanes.js"></script>
     <title>@ViewBag.Title - TechAir</title>
     @*<link href="~/Content/HomePage/homepage.css" rel="stylesheet" type="text/css" runat="server" />*@
-
+    <script>
+        window.onload = function () {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('dateInput').setAttribute('min', today);
+        }
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+    </script>
     <link href="~/Content/Admin/formstyles.css" rel="stylesheet" />
     <style>
         .user-details {
@@ -52,21 +60,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark ">
         <div class="container">
-            @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>*@
-            @*<div class="navbar fixed-top d-sm-inline-flex justify-content-between">
-                        <a href="#HomeSection" class="nav-link">About Us</a>
-                        <a href="#aboutus" class="nav-link">About Us</a>
-                        <ul class="navbar-nav flex-grow-1">
-
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        </ul>
-                    </div>*@
+          
             <nav class="navbar fixed-top navbar-light bg-dark nav-style ">
                 <div class="admin-nav">
                     <a class="navbar-brand" href="#HomeSection">

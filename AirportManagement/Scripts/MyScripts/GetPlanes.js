@@ -13,15 +13,14 @@
             /*alert(HangerId);*/
             var fromdate = $("input[name='fromdate']").val();
             var todate = $("input[name='todate']").val();
-            alert("Todate"+todate);
-            alert(fromdate + todate);
+            
             if (todate == "") {
                 todate = fromdate
             }
 
             document.querySelector('.spinner-container').style.display = 'flex';
             document.querySelector('.center-content').style.display = 'none';
-            alert("https://localhost:44328/Hanger/GetPlanes?FromDate=" + fromdate + "&ToDate=" + todate);
+           
             var dateObject = {
                 "FromDate": fromdate,
                 "ToDate": todate,
@@ -124,8 +123,7 @@
                 contentType: "application/json;charset=utf-8",
                 success: function (data) {
                     /*alert("sucess");*/
-                    document.querySelector('.spinner-container').style.display = 'none';
-                    document.querySelector('.center-content').style.display = 'flex';
+                    
                     var modalBody = $('#errorModal .modal-body');
                     modalBody.empty();
                     modalBody.append("<p>" + data + "</p>");
@@ -143,25 +141,83 @@
                     $("#errorModal").modal('show');
                 }
             });
+            
+            setTimeout(function () {
+                var fromdate = $("input[name='fromdate']").val();
+                var todate = $("input[name='todate']").val();
+                if (todate == "") {
+                    todate = fromdate
+                }
+                alert(fromdate + todate);
+                $.ajax({
+                    url: "/Hanger/ReloadHangers?fromdate=" + fromdate + "&todate=" + todate,
+                    type: 'GET',
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        
+                        alert(data.length);
+                        if (data.length > 0) {
+                            document.querySelector('.spinner-container').style.display = 'none';
+                            document.querySelector('.center-content').style.display = 'flex';
+                            $("#AvailableHangers").empty();
+                            $("#AvailableHangers").append("<div class='table-header'><div class='table-cell'>" +
+                                "Hanger Location</div ><div class='table-cell'>Hanger Id</div><div class='table-cell'>Manager Name</div>"
+                                + "<div class='table-cell'>Social Security Number</div><div class='table-cell'>Book</div></div > ")
+                            for (i = 0; i < data.length; i++) {
+                                var newRow = `
+                                        <div class="table-row">
+                                            <div class="table-cell">${data[i].HangerLocation}</div>
+                                            <div class="table-cell">${data[i].HangerId}</div>
+                                            <div class="table-cell">${data[i].ManagerName}</div>
+                                            <div class="table-cell">${data[i].SSNo}</div>
+                                            <div class="table-cell"><input type='radio' name='Book' value='${data[i].HangerId}' id='Book'/></div>
+                                                            <input type="hidden" name="fromdate" value='${fromdate}' />
+                                                    <input type="hidden" name="todate" value='${todate}' />
+                                                    <input type="hidden" name="L${data[i].HangerId}" value='${data[i].HangerLocation}' />
+                                                    <input type="hidden" name="I${data[i].HangerId}" value='${data[i].HangerId}' />
 
-
+                                            </div>
+                                    `;
+                                $("#AvailableHangers").append(newRow);
+                            }
+                        }
+                        
+                        
+                    },
+                    error: function (x, err) {
+                        
+                        var modalBody = $('#errorModal .modal-body');
+                        modalBody.empty();
+                        modalBody.append("<p>All Hangers are full</p>")
+                        $('#successModal').modal('hide');
+                        $("#errorModal").modal('show');
+                        setTimeout(function () {
+                            window.location.href = "/hanger/Gethangers";
+                        }, 4000);
+                    }
+                })
+            },4000)
         }
     })
 })
 
 function CheckDates() {
     var fromdate = $("#GetFromDate");
+    var selectedFromDate = new Date(fromdate.val());
+    selectedFromDate.setHours(0, 0, 0, 0);
     var todate = $("#GetToDate");
     var modal = $("#DateErrorModal");
     var modalBody = modal.find('.modal-body');
     var currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
     /*alert(fromdate.val() + " " + currentDate);*/
     if (fromdate.val() === "") {
         modal.modal('show');
         modalBody.html("<p>Please select a From Date.</p>");
         return false;
-    } 
-    else if (new Date(fromdate.val()) < currentDate)
+    }
+    else if (selectedFromDate < currentDate)
     {
         modal.modal('show');
         modalBody.html("<p>FromDate cannot be less than today's date</p>");
